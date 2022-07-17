@@ -21,19 +21,18 @@ On my local computer (CPU: Intel Core i7 2600; RAM: 16GB) output of Tests (see t
 ```
 Inserting 30000 Guid Keys
 
-RWayTrie (Optimized) - INSERT:  301 Ms -    136829256 Bytes -   133622,320 Kb -  130,491 Mb
-RWayTrie (Optimized) - SEARCH:  113 Ms -        30000 prefix
+RWayTrie (Optimized) - INSERT:  286 Ms -    136807240 Bytes -   133600,820 Kb -   130,47 Mb
+RWayTrie (Optimized) - SEARCH:  125 Ms -        30000 prefix
 GC Collect
 
-RWayTrie (Dt)        - INSERT:  464 Ms -    270503704 Bytes -   264163,773 Kb -  257,972 Mb
-RWayTrie (Dt)        - SEARCH:   48 Ms -        30000 prefix
+RWayTrie (Dt)        - INSERT:  481 Ms -    270447072 Bytes -   264108,469 Kb -  257,918 Mb
+RWayTrie (Dt)        - SEARCH:  142 Ms -        30000 prefix
 GC Collect
 
-RWayTrie (Std)       - INSERT: 1419 Ms -   2215319536 Bytes -  2163397,984 Kb - 2112,693 Mb
-RWayTrie (Std)       - SEARCH:   14 Ms -        30000 prefix
+RWayTrie (Std)       - INSERT: 1583 Ms -   2214956272 Bytes -  2163043,234 Kb - 2112,347 Mb
+RWayTrie (Std)       - SEARCH:  168 Ms -        30000 prefix
 GC Collect
 ```
 
-As you can see optimized RwayTrie uses 16 times less memory then standard RWayTrie and ~2 times less memory then RwayTrie with Dictionary instead of array
-Search in optimized RwayTrie is slower then others because (as mentioned above) it uses RedBlackTree, search complexity of which is Log2(N) time 
-so search complexity in each node is Log2(256) = 8 is maximum time
+As you can see optimized RwayTrie uses 16 times less memory then standard RWayTrie and ~2 times less memory then RwayTrie with Dictionary instead of array.
+Insert in optimized RwayTrie is ~5 times faster then standard RWayTrie and ~2 times faster then RwayTrie with Dictionary
