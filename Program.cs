@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using dotNet_RwayTrie.DataStructures.RWayTrie;
 using dotNet_RwayTrie.DataStructures.RWayTrieDt;
 using dotNet_RwayTrie.DataStructures.RWayTrieStd;
@@ -67,10 +68,8 @@ namespace dotNet_RwayTrie
 
             foreach (var (key, val) in list)
             {
-                var pairs = rw.Search(key).ToList();
-
                 sw2.Start();
-                rw.Insert(key, val);
+                var pairs = rw.Search(key).ToList();
                 sw2.Stop();
             }
 
@@ -104,10 +103,8 @@ namespace dotNet_RwayTrie
 
             foreach (var (key, val) in list)
             {
-                var pairs = rw.Search(key).ToList();
-
                 sw2.Start();
-                rw.Insert(key, val);
+                var pairs = rw.Search(key).ToList();
                 sw2.Stop();
             }
 
@@ -141,10 +138,8 @@ namespace dotNet_RwayTrie
 
             foreach (var (key, val) in list)
             {
-                var pairs = rw.Search(key).ToList();
-
                 sw2.Start();
-                rw.Insert(key, val);
+                var pairs = rw.Search(key).ToList();
                 sw2.Stop();
             }
 
