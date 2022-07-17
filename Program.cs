@@ -1,12 +1,12 @@
-﻿using dotNet_RwayTrie.DataStructures.RWayTrie;
-using dotNet_RwayTrie.DataStructures.RWayTrieDt;
-using dotNet_RwayTrie.DataStructures.RWayTrieStd;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using dotNet_RwayTrie.DataStructures.RWayTrie;
+using dotNet_RwayTrie.DataStructures.RWayTrieDt;
+using dotNet_RwayTrie.DataStructures.RWayTrieStd;
 
 namespace dotNet_RwayTrie
 {
@@ -31,6 +31,7 @@ namespace dotNet_RwayTrie
             }
 
             Console.WriteLine($"Inserting {list.Count} Guid Keys");
+            Console.WriteLine();
 
             Test1(list);
             Console.WriteLine();
@@ -62,7 +63,7 @@ namespace dotNet_RwayTrie
             var totalMem = GC.GetTotalMemory(true);
             var diffMem = totalMem - currMem;
 
-            Console.WriteLine($"New RWayTrie             - INSERT: {sw1.ElapsedMilliseconds,4:####} Ms - {diffMem,12:############} - {(diffMem / 1024D),12:########.000}Kb - {(diffMem / 1024D / 1024D),8:####.###}Mb");
+            Console.WriteLine($"RWayTrie (Optimized) - INSERT: {sw1.ElapsedMilliseconds,4:####} Ms - {diffMem,12:############} Bytes - {(diffMem / 1024D),12:########.000} Kb - {(diffMem / 1024D / 1024D),8:####.###} Mb");
 
             foreach (var (key, val) in list)
             {
@@ -73,7 +74,8 @@ namespace dotNet_RwayTrie
                 sw2.Stop();
             }
 
-            Console.WriteLine($"New RWayTrie             - SEARCH: {sw2.ElapsedMilliseconds,4:####} Ms - {diffMem,12:############} - {(diffMem / 1024D),12:########.000}Kb - {(diffMem / 1024D / 1024D),8:####.###}Mb");
+            Console.WriteLine($"RWayTrie (Optimized) - SEARCH: {sw2.ElapsedMilliseconds,4:####} Ms - {list.Count,12:############} prefix");
+            Console.WriteLine($"GC Collect");
 
             GC.Collect();
             GC.WaitForFullGCComplete();
@@ -97,7 +99,7 @@ namespace dotNet_RwayTrie
             var totalMem = GC.GetTotalMemory(true);
             var diffMem = totalMem - currMem;
 
-            Console.WriteLine($"HashMap RWayTrie         - INSERT: {sw1.ElapsedMilliseconds,4:####} Ms - {diffMem,12:############} - {(diffMem / 1024D),12:########.000}Kb - {(diffMem / 1024D / 1024D),8:####.###}Mb");
+            Console.WriteLine($"RWayTrie (Dt)        - INSERT: {sw1.ElapsedMilliseconds,4:####} Ms - {diffMem,12:############} Bytes - {(diffMem / 1024D),12:########.000} Kb - {(diffMem / 1024D / 1024D),8:####.###} Mb");
 
 
             foreach (var (key, val) in list)
@@ -109,7 +111,8 @@ namespace dotNet_RwayTrie
                 sw2.Stop();
             }
 
-            Console.WriteLine($"HashMap RWayTrie         - SEARCH: {sw2.ElapsedMilliseconds,4:####} Ms - {diffMem,12:############} - {(diffMem / 1024D),12:########.000}Kb - {(diffMem / 1024D / 1024D),8:####.###}Mb");
+            Console.WriteLine($"RWayTrie (Dt)        - SEARCH: {sw2.ElapsedMilliseconds,4:####} Ms - {list.Count,12:############} prefix");
+            Console.WriteLine($"GC Collect");
 
             GC.Collect();
             GC.WaitForFullGCComplete();
@@ -133,7 +136,7 @@ namespace dotNet_RwayTrie
             var totalMem = GC.GetTotalMemory(true);
             var diffMem = totalMem - currMem;
 
-            Console.WriteLine($"Standad (Array) RWayTrie - INSERT: {sw1.ElapsedMilliseconds,4:####} Ms - {diffMem,12:############} - {(diffMem / 1024D),12:########.000}Kb - {(diffMem / 1024D / 1024D),8:####.###}Mb");
+            Console.WriteLine($"RWayTrie (Std)       - INSERT: {sw1.ElapsedMilliseconds,4:####} Ms - {diffMem,12:############} Bytes - {(diffMem / 1024D),12:########.000} Kb - {(diffMem / 1024D / 1024D),8:####.###} Mb");
 
 
             foreach (var (key, val) in list)
@@ -145,12 +148,11 @@ namespace dotNet_RwayTrie
                 sw2.Stop();
             }
 
-            Console.WriteLine($"Standad (Array) RWayTrie - SEARCH: {sw2.ElapsedMilliseconds,4:####} Ms - {diffMem,12:############} - {(diffMem / 1024D),12:########.000}Kb - {(diffMem / 1024D / 1024D),8:####.###}Mb");
+            Console.WriteLine($"RWayTrie (Std)       - SEARCH: {sw2.ElapsedMilliseconds,4:####} Ms - {list.Count,12:############} prefix");
+            Console.WriteLine($"GC Collect");
 
             GC.Collect();
             GC.WaitForFullGCComplete();
         }
     }
-
-
 }
